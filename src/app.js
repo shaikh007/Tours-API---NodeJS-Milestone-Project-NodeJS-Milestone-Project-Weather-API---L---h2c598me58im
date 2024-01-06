@@ -11,7 +11,7 @@ app.get('/tours', (req, res) => {
   res.status(200).json({
     status: 200,
     message: 'Success',
-    data: Array.isArray(tourDetails) ? tourDetails : [tourDetails],
+    data: Array.isArray(tourDetails) ? [tourDetails] : [tourDetails],
   });
 });
 
