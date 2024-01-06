@@ -5,7 +5,7 @@ const app = express();
 //Middleware
 app.use(express.json());
 
-const tourDetails = JSON.parse(fs.readFileSync(`${__dirname}/data/tours.json`));
+let tourDetails = JSON.parse(fs.readFileSync(`${__dirname}/data/tours.json`));
 
 app.get('/tours', (req, res) => {
   res.status(200).json({
