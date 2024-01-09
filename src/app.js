@@ -10,11 +10,7 @@ const tourDetails = JSON.parse(fs.readFileSync(`${__dirname}/data/tours.json`));
 app.get('/tours', (req, res) => {
   //write a code here to get all the tours from tours.json
   // Retrieve all tours
-  return res.status(200).json({
-    status: 200,
-    message: 'Success',
-    data: tourDetails,
-  });
+  return res.status(200).json(tourDetails);
 });
 
 app.post('/tours', (req, res) => {
