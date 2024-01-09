@@ -10,7 +10,7 @@ const tourDetails = JSON.parse(fs.readFileSync(`${__dirname}/data/tours.json`));
 app.get('/tours', (req, res) => {
   //write a code here to get all the tours from tours.json
   // Retrieve all tours
-  res.status(200).json({
+  return res.status(200).json({
     status: 200,
     message: 'Success',
     data: tourDetails,
@@ -40,7 +40,6 @@ app.post('/tours', (req, res) => {
     fs.writeFileSync(`${__dirname}/data/tours.json`, JSON.stringify(tourDetails, null, 2));
 
     res.status(200).json({
-      status: 200,
       message: 'Tour added successfully',
     });
   } catch (error) {
@@ -64,7 +63,6 @@ app.put('/tours/:id', (req, res) => {
   // If tour not found, return 404
   if (index === -1) {
     return res.status(404).json({
-      status: 404,
       message: 'Tour not found',
     });
   }
@@ -76,8 +74,7 @@ app.put('/tours/:id', (req, res) => {
     // Update tours.json
     fs.writeFileSync(`${__dirname}/data/tours.json`, JSON.stringify(tourDetails, null, 2));
 
-    res.status(200).json({
-      status: 200,
+    res.status(200).json({    
       message: 'Tour updated successfully',
     });
   } catch (error) {
@@ -99,7 +96,6 @@ app.delete('/tours/:id', (req, res) => {
   // If tour not found, return 404
   if (index === -1) {
     return res.status(404).json({
-      status: 404,
       message: 'Tour not found',
     });
   }
@@ -112,7 +108,6 @@ app.delete('/tours/:id', (req, res) => {
     fs.writeFileSync(`${__dirname}/data/tours.json`, JSON.stringify(tourDetails, null, 2));
 
     res.status(200).json({
-      status: 200,
       message: 'Tour deleted successfully',
     });
   } catch (error) {
